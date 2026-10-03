@@ -1,0 +1,66 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local config
+config/local.env
+
+# SRA Toolkit local cache created by prefetch
+ERR*/
+SRR*/
+DRR*/
+
+# Large/raw biological data
+data/raw/*
+!data/raw/.gitkeep
+data/reference/*
+!data/reference/.gitkeep
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.sam
+*.bam
+*.bai
+*.bcf
+*.vcf
+*.vcf.gz
+*.tbi
+*.csi
+
+# Locally generated sequencing results
+results/qc/
+results/trimmed/
+results/alignment/
+results/variants/
+results/run_summary.md
+results/tool_versions.txt
+
+# OS/editor
+.DS_Store
+*.swp
+
+# Large sequencing/reference files
+*.fastq
+*.fastq.gz
+*.bam
+*.bam.bai
+*.sai
+*.sra
+
+# Reference genome and BWA indexes
+data/reference/*.fasta
+data/reference/*.fa
+data/reference/*.gz
+data/reference/*.amb
+data/reference/*.ann
+data/reference/*.bwt
+data/reference/*.pac
+data/reference/*.sa
+data/reference/*.fai
+
+# Temporary/intermediate files
+tmp/
+*.tmp.bam

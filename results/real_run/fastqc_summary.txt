@@ -1,0 +1,10 @@
+PASS	Basic Statistics	ERR14666789.fastq
+PASS	Per base sequence quality	ERR14666789.fastq
+PASS	Per sequence quality scores	ERR14666789.fastq
+FAIL	Per base sequence content	ERR14666789.fastq
+FAIL	Per sequence GC content	ERR14666789.fastq
+PASS	Per base N content	ERR14666789.fastq
+WARN	Sequence Length Distribution	ERR14666789.fastq
+PASS	Sequence Duplication Levels	ERR14666789.fastq
+PASS	Overrepresented sequences	ERR14666789.fastq
+PASS	Adapter Content	ERR14666789.fastq

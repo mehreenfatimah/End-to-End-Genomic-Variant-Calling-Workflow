@@ -1,0 +1,13 @@
+Accession: ERR14666789
+Sequencing platform: Illumina
+Read type: single-end
+Observed read length: 31 bp
+Reads written to FASTQ: 12,464,796
+Reference: human_g1k_v37 / GRCh37
+Alignment: BWA aln + samse
+Trimming: not performed
+Reason for no trimming: FastQC showed good base quality and no adapter contamination; reads were already only 31 bp.
+Variant caller: bcftools mpileup + call
+Minimum mapping quality for pileup: 20
+Minimum base quality for pileup: 20
+Portfolio filter: QUAL >= 20 and INFO/DP >= 3
