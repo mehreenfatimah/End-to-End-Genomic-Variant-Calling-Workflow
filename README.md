@@ -93,7 +93,7 @@ These thresholds are analysis choices for this workflow and should not be interp
 ## Repository structure
 
 ```text
-variant-calling-workflow/
+End-to-End-Genomic-Variant-Calling-Workflow/
 ├── .github/
 ├── config/
 ├── data/
