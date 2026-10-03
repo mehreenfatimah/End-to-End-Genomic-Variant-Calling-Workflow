@@ -1,24 +1,19 @@
-# Data provenance and local data layout
+# Data layout
 
-The recovered coursework selected **SRA run `ERR14666789`** (experiment `ERX14068296`) for an educational genomic variant-calling workflow. The archived report described it as human Illumina sequencing associated with a study of Punic genetic diversity.
+This project uses public sequencing accession **ERR14666789**.
 
-That description is preserved as part of the recovered coursework context. Before using the accession for new scientific claims, verify the current archive metadata directly in NCBI SRA/ENA.
-
-## Why sequencing data are not committed
-
-FASTQ, BAM, and VCF files can become large and should not be duplicated in an ordinary Git repository. The workflow downloads the public accession locally and `.gitignore` excludes generated sequencing/alignment files.
+The completed analysis used a **single-end FASTQ** file.
 
 ## Expected local layout
 
-```text
 data/
 ├── raw/
-│   ├── ERR14666789_1.fastq.gz
-│   └── ERR14666789_2.fastq.gz
+│   └── ERR14666789.fastq
 └── reference/
-    └── reference_genome.fa
-```
+    └── human_g1k_v37.fasta
 
-## Reference genome
+Large sequencing and reference files are intentionally excluded from GitHub.
 
-A reference FASTA is deliberately not bundled. Put the reference you choose at the path specified by `REFERENCE_FASTA` in `config/local.env` and document the exact build/version before interpreting coordinates or variants.
+The sequencing data can be retrieved from the public accession using SRA Toolkit.
+
+The human GRCh37 reference FASTA is also kept outside Git and must be available locally before running the alignment stage.

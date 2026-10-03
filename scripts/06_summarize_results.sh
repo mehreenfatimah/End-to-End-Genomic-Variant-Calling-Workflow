@@ -1,38 +1,41 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-cd "$ROOT_DIR"
-
 RUN_ID="${1:-ERR14666789}"
-VCF="${2:-results/variants/${RUN_ID}.normalized.vcf.gz}"
-FLAGSTAT="${3:-results/alignment/${RUN_ID}.flagstat.txt}"
-OUT="${4:-results/run_summary.md}"
 
-command -v bcftools >/dev/null 2>&1 || { echo "Missing dependency: bcftools" >&2; exit 1; }
-[[ -s "$VCF" ]] || { echo "Normalized VCF not found: $VCF" >&2; exit 2; }
+OUT="results/real_run"
+ALIGN="$OUT/alignment"
+VAR="$OUT/variants"
 
-total=$(bcftools view -H "$VCF" | wc -l | tr -d ' ')
-snps=$(bcftools view -v snps -H "$VCF" | wc -l | tr -d ' ')
-indels=$(bcftools view -v indels -H "$VCF" | wc -l | tr -d ' ')
+RAWVCF="$VAR/${RUN_ID}.raw.vcf.gz"
+FILTERED="$VAR/${RUN_ID}.filtered.vcf.gz"
 
-{
-  echo "# Workflow run summary"
-  echo
-  echo "- **Run accession:** \`$RUN_ID\`"
-  echo "- **Normalized variant records:** $total"
-  echo "- **SNP records:** $snps"
-  echo "- **Indel records:** $indels"
-  echo
-  echo "These are observed counts from the locally generated VCF. They are not clinical interpretations."
-  if [[ -s "$FLAGSTAT" ]]; then
-    echo
-    echo "## Alignment flagstat"
-    echo
-    echo '```text'
-    cat "$FLAGSTAT"
-    echo '```'
-  fi
-} > "$OUT"
+[[ -s "$RAWVCF" ]] || {
+    echo "Raw VCF not found: $RAWVCF" >&2
+    exit 2
+}
 
-echo "Summary written to $OUT"
+[[ -s "$FILTERED" ]] || {
+    echo "Filtered VCF not found: $FILTERED" >&2
+    exit 2
+}
+
+bcftools view -H "$RAWVCF" \
+    | wc -l \
+    > "$VAR/raw_variant_count.txt"
+
+bcftools view -H "$FILTERED" \
+    | wc -l \
+    > "$VAR/filtered_variant_count.txt"
+
+echo
+echo "Mapping results:"
+cat "$ALIGN/${RUN_ID}.flagstat.txt"
+
+echo
+echo "Raw variant count:"
+cat "$VAR/raw_variant_count.txt"
+
+echo
+echo "Filtered variant count:"
+cat "$VAR/filtered_variant_count.txt"

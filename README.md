@@ -110,14 +110,25 @@ Large sequencing files, reference genomes, BAM files, and complete VCF files are
 
 ## Reproducibility
 
-Create the environment with:
+Create the Conda environment with:
 
-```bash
-conda env create -f environment.yml
-conda activate variant-calling-workflow
-```
+`conda env create -f environment.yml`
 
-The individual workflow stages are available under `scripts/`.
+Then activate it:
+
+`conda activate variant-calling-workflow`
+
+Create a local configuration file:
+
+`cp config/example.env config/local.env`
+
+Place the GRCh37 reference FASTA at the path specified by `REFERENCE_FASTA` in the local configuration.
+
+Run the complete workflow with:
+
+`./scripts/run_pipeline.sh config/local.env`
+
+The public workflow follows the same single-end processing strategy used for the completed ERR14666789 analysis.
 
 Selected quality-control outputs, alignment statistics, variant statistics, logs, and metadata from the completed real-data run are preserved under `results/`.
 

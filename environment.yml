@@ -8,7 +8,6 @@ dependencies:
   - python=3.12
   - sra-tools
   - fastqc
-  - trimmomatic
   - bwa
   - samtools
   - bcftools
