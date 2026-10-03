@@ -50,7 +50,7 @@ FastQC was used to evaluate sequencing-read quality before alignment.
 
 The reads showed good base quality and no meaningful adapter contamination. Because the reads were already approximately **31 bp long**, trimming was not performed for the completed real-data run.
 
-The reusable workflow still contains a trimming stage for datasets where trimming is appropriate.
+Trimming is not included in the current workflow because it was not required for the completed dataset.
 
 ## Alignment
 
