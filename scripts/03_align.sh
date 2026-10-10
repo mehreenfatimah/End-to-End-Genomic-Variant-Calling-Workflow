@@ -3,7 +3,7 @@ set -euo pipefail
 
 RUN_ID="${1:-ERR14666789}"
 REF="${2:-data/reference/human_g1k_v37.fasta}"
-FASTQ="${3:-data/raw/ERR14666789.fastq}"
+FASTQ="${3:-data/raw/${RUN_ID}.fastq}"
 THREADS="${4:-6}"
 
 OUT="results/real_run/alignment"
