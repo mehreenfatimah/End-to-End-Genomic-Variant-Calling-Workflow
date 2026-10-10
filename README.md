@@ -155,3 +155,12 @@ This project demonstrates a reproducible genomic variant-calling workflow and is
 The detected variants have not been interpreted as pathogenic or clinically meaningful.
 
 A future extension may add functional variant annotation and downstream machine-learning analysis using real biological annotations.
+
+### Analysis Considerations
+
+The dataset contains 31-bp single-end reads, which can make unique alignment challenging in repetitive genomic regions.
+
+The reported 99.11% mapping rate represents the proportion of mapped reads, not independently verified variant-calling accuracy.
+
+Variant candidates were filtered using QUAL >= 20 and INFO/DP >= 3. These thresholds were selected for this analysis and do not constitute clinical validation.
+
